@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kontakt – Pip</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      form {
+        display: grid;
+        gap: 14px;
+      }
+      label {
+        display: grid;
+        gap: 4px;
+        font-weight: 600;
+      }
+      input,
+      textarea {
+        font: inherit;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--muted);
+        background: var(--card);
+        color: var(--ink);
+      }
+      button {
+        font: inherit;
+        font-weight: 700;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--primary);
+        color: var(--ground);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a href="index.html">Pip</a><a href="datenschutz.html">Datenschutz</a
+        ><a href="nutzungsbedingungen.html">Nutzungsbedingungen</a><a href="kontakt.html">Kontakt</a
+        ><a href="impressum.html">Impressum</a>
+      </nav>
+
+      <h1>Kontakt</h1>
+      <p>Fragen, Wünsche oder Probleme mit Pip? Schreib uns &ndash; wir antworten so schnell wie möglich.</p>
+
+      <form id="contact" class="card">
+        <label>
+          Dein Name
+          <input name="name" autocomplete="name" required />
+        </label>
+        <label>
+          Deine E-Mail-Adresse (für die Antwort)
+          <input name="email" type="email" autocomplete="email" required />
+        </label>
+        <label>
+          Betreff
+          <input name="subject" value="Frage zu Pip" required />
+        </label>
+        <label>
+          Nachricht
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+        <button type="submit">Nachricht vorbereiten</button>
+        <p class="muted">
+          Beim Absenden öffnet sich dein E-Mail-Programm mit der fertigen Nachricht an
+          <a href="mailto:leifbertsch@gmail.com">leifbertsch@gmail.com</a>. Du schickst sie dort selbst ab; auf dieser
+          Seite wird nichts gespeichert. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.
+        </p>
+      </form>
+
+      <noscript>
+        <p>Ohne JavaScript schreib uns bitte direkt an <a href="mailto:leifbertsch@gmail.com">leifbertsch@gmail.com</a>.</p>
+      </noscript>
+
+      <script>
+        document.getElementById('contact').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var f = e.target;
+          var body = f.message.value + '\n\n' + f.name.value + '\n' + f.email.value;
+          location.href =
+            'mailto:leifbertsch@gmail.com?subject=' +
+            encodeURIComponent(f.subject.value) +
+            '&body=' +
+            encodeURIComponent(body);
+        });
+      </script>
+
+      <footer>Stand: Oktober 2026</footer>
+    </main>
+  </body>
+</html>
